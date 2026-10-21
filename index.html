@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel de Automação</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <!-- ===================== PÁGINA 1: LOGIN ===================== -->
+  <div id="tela-login" class="login-wrap" hidden>
+    <form id="form-login" class="login-card" novalidate>
+      <div class="login-marca">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h1>Entrar no painel</h1>
+      <p class="texto-sec">Use seu e-mail e senha pra continuar.</p>
+
+      <label class="campo">
+        <span class="rotulo">E-mail</span>
+        <input type="email" id="login-email" autocomplete="email" placeholder="voce@exemplo.com" required>
+      </label>
+      <label class="campo">
+        <span class="rotulo">Senha</span>
+        <input type="password" id="login-senha" autocomplete="current-password" placeholder="Sua senha" required>
+      </label>
+
+      <div id="login-erro" class="alerta alerta-erro" hidden></div>
+      <button type="submit" class="btn btn-primario btn-largo" id="btn-entrar">Entrar</button>
+
+      <p id="login-aviso-local" class="aviso-local" hidden>
+        Modo de teste local: qualquer e-mail e uma senha de 5 dígitos entram.
+        No ar (produção), o login será pelo Supabase.
+      </p>
+    </form>
+  </div>
+
+  <!-- ===================== PÁGINA 2: O SISTEMA ===================== -->
+  <div id="app" class="app" hidden>
+    <header class="topo-mobile">
+      <button class="btn-icone" id="btn-menu" aria-label="Abrir menu">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <span class="topo-titulo">Painel</span>
+    </header>
+
+    <aside class="menu" id="menu">
+      <div class="menu-marca">
+        <span class="menu-logo">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </span>
+        Painel
+      </div>
+      <nav class="menu-nav">
+        <a href="#inicio" class="menu-item" data-rota="inicio">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>
+          Início
+        </a>
+        <a href="#calendario" class="menu-item" data-rota="calendario">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Calendário
+        </a>
+        <a href="#instagram" class="menu-item" data-rota="instagram">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>
+          Instagram
+        </a>
+      </nav>
+      <div class="menu-rodape">
+        <div class="menu-usuario" id="menu-usuario"></div>
+        <button class="btn btn-fantasma btn-largo" id="btn-sair">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+          Sair
+        </button>
+      </div>
+    </aside>
+
+    <main class="conteudo">
+      <div id="faixa-local" class="faixa-local" hidden>
+        Você está no modo de teste local. Pra colocar no ar de verdade (com login e dados salvos), siga o LEIA-ME.
+      </div>
+      <div id="vista"></div>
+    </main>
+  </div>
+
+  <!-- Editor de automação (tela cheia) -->
+  <div id="editor" class="editor" hidden></div>
+
+  <!-- Avisos rápidos -->
+  <div id="toast" class="toast" hidden></div>
+
+  <!-- Cliente oficial do Supabase (só é usado quando o site está no ar) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/dados.js"></script>
+  <script src="js/editor.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
